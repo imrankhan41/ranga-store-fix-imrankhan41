@@ -18,8 +18,13 @@ const showProducts = (products) => {
     <img class="product-image" src="${image}"></img>
       </div>
       <h3>${product.title}</h3>
-      <p>Category: ${product.category}</p>
+      <h5>Category: ${product.category}</h5>
       <h2>Price: $ ${product.price}</h2>
+      <span style="color:grey"><i class="fas fa-star"></i></span>
+      <span style="color:grey"><i class="fas fa-star"></i></span>
+      <span style="color:grey"><i class="fas fa-star"></i></span>
+      <span style="color:grey"><i class="fas fa-star"></i></span>
+      <span style="color:grey"><i class="fas fa-star-half-alt"></i></span>
       <h3 style="color:grey">Average rating: ${product.rating.rate}</h3>
       <h4 style="color:grey">No of person rated this product: ${product.rating.count} </h4>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
@@ -44,11 +49,16 @@ const showDetails = productDetails =>{
   </div>
   <div class="product-detail text-arap">
   <h3>${productDetails.title}</h3>
-  <p>Category: ${productDetails.category}</p>
-  <h6>Category: ${productDetails.description.slice(0,150)}</h6>
-  <h2>Price: $ ${productDetails.price}</h2>
-  <h3>Rate: ${productDetails.rating.rate}</h3>
-  <h4>Count: ${productDetails.rating.count}</h4>
+  <p>Category: <span style="color:grey"> ${productDetails.category}</span></p>
+  <h6>Description: <span style="color:grey"> ${productDetails.description.slice(0,150)}</span></h6>
+  <h2>Price: <span style="color:grey"> $ ${productDetails.price}</span></h2>
+  <span><i class="fas fa-star"></i></span>
+  <span><i class="fas fa-star"></i></span>
+  <span><i class="fas fa-star"></i></span>
+  <span><i class="fas fa-star"></i></span>
+  <span><i class="fas fa-star-half-alt"></i></span>
+  <h3>Rate: <span style="color:grey"> ${productDetails.rating.rate}</span></h3>
+  <h4>Count: <span style="color:grey"> ${productDetails.rating.count}</span></h4>
   <button onclick="addToCart(${productDetails.id},${productDetails.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
   </div> 
   `
