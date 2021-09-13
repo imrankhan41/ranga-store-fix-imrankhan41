@@ -20,14 +20,40 @@ const showProducts = (products) => {
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
       <h2>Price: $ ${product.price}</h2>
-      <h3>Rating: ${product.rating.rate}</h3>
-      <h4>No of person rated this product: ${product.rating.count} </h4>
+      <h3 style="color:grey">Average rating: ${product.rating.rate}</h3>
+      <h4 style="color:grey">No of person rated this product: ${product.rating.count} </h4>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <button id="details-btn" class="btn btn-danger" onclick="addDetails(${product.id})">Details</button></div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
 };
+const addDetails =id =>{
+  const url=`https://fakestoreapi.com/products/${id}`;
+  fetch(url)
+          .then(res=>res.json())
+          .then(data=>showDetails(data))
+}
+const showDetails = productDetails =>{
+  const detailProduct =document.getElementById("product-detail");
+  const div = document.createElement("div");
+  detailProduct.textContent="";
+  div.innerHTML=`
+  <div class="product-detail-image">
+  <img style='width: 300px; height: 300px;' src="${productDetails.image}" alt="">
+  </div>
+  <div class="product-detail text-arap">
+  <h3>${productDetails.title}</h3>
+  <p>Category: ${productDetails.category}</p>
+  <h6>Category: ${productDetails.description.slice(0,150)}</h6>
+  <h2>Price: $ ${productDetails.price}</h2>
+  <h3>Rate: ${productDetails.rating.rate}</h3>
+  <h4>Count: ${productDetails.rating.count}</h4>
+  <button onclick="addToCart(${productDetails.id},${productDetails.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+  </div> 
+  `
+  detailProduct.appendChild(div);
+}
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
