@@ -1,10 +1,10 @@
 //show result after searching category name
 const loadProducts = () => {
-  const searchField = document.getElementById('search-field');
-  const searchText = searchField.value;
-  searchField.value="";
-  const url = `https://fakestoreapi.com/products/category/${searchText}`;
-  console.log(url)
+  // const searchField = document.getElementById('search-field');
+  // const searchText = searchField.value;
+  // searchField.value="";
+  // const url = `https://fakestoreapi.com/products/category/${searchText}`;
+  const url = `https://fakestoreapi.com/products`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
