@@ -1,4 +1,4 @@
-//show result after searching category name
+//show result 
 const loadProducts = () => {
   // const searchField = document.getElementById('search-field');
   // const searchText = searchField.value;
