@@ -1,17 +1,24 @@
+//show result after searching category name
 const loadProducts = () => {
-  const url = `https://fakestoreapi.com/products`;
+  const searchField = document.getElementById('search-field');
+  const searchText = searchField.value;
+  searchField.value="";
+  const url = `https://fakestoreapi.com/products/category/${searchText}`;
+  console.log(url)
   fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
 };
-loadProducts();
+ loadProducts();
 
 // show all product in UI 
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
+
   for (const product of allProducts) {
     const image = product.image;
     const div = document.createElement("div");
+    
     div.classList.add("product");
     div.innerHTML = `<div class="single-product">
       <div>
@@ -33,6 +40,7 @@ const showProducts = (products) => {
     document.getElementById("all-products").appendChild(div);
   }
 };
+//click add deatails button to get details of product
 const addDetails =id =>{
   const url=`https://fakestoreapi.com/products/${id}`;
   fetch(url)
@@ -64,6 +72,7 @@ const showDetails = productDetails =>{
   `
   detailProduct.appendChild(div);
 }
+// addtion of product no, price, delivery-charge,tax & total price 
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
